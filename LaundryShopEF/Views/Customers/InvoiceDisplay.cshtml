@@ -1,0 +1,48 @@
+﻿@model IEnumerable<LaundryShopEF.Models.Invoice>
+@{
+    Layout = null;
+
+}
+<table class="table-active table-borderless table table-hover table-responsive" id="invoiceTable">
+    <thead class="table-info">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LaundryType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Qty)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td class="form-group">
+                    @Html.DisplayFor(m => e.OrderDate)
+                </td>
+                <td class="form-group">
+                    @Html.DisplayFor(m => e.LaundryType)
+                </td>
+                <td class="form-group">
+                    @Html.DisplayFor(m => e.ItemName)
+                </td>
+                <td class="form-group">
+                    @Html.DisplayFor(m => e.Price)
+                </td>
+                <td class="form-group">
+                    @Html.DisplayFor(m => e.Qty)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

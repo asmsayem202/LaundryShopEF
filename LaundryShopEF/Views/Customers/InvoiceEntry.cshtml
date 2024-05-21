@@ -1,0 +1,65 @@
+﻿@model LaundryShopEF.Models.Customer
+@{
+    Layout = null;
+
+}
+
+<table class="table-active table-borderless table table-hover table-responsive">
+    <thead class="table-info text-lg-center">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Invoices.First().OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Invoices.First().LaundryType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Invoices.First().ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Invoices.First().Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Invoices.First().Qty)
+            </th>
+            <th>
+                <button class="btn btn-sm btn-close-white btn-outline-success" type="submit" name="command" value="add">Add</button>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Invoices.Count; i++)
+        {
+            <tr>
+                <td class="form-group">
+
+                    @Html.HiddenFor(m => Model.Invoices[i].CustomerID)
+                    @Html.EditorFor(m => Model.Invoices[i].OrderDate, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+                <td class="form-group">
+                    @Html.EnumDropDownListFor(m => Model.Invoices[i].LaundryType, new { @class = "form-control" })
+                </td>
+                <td class="form-group">
+                    @Html.EditorFor(m => Model.Invoices[i].ItemName, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+                <td class="form-group">
+                    @Html.EditorFor(m => Model.Invoices[i].Price, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+                <td class="form-group">
+                    @Html.EditorFor(m => Model.Invoices[i].Qty, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-close-white btn-outline-danger" type="submit" name="command" value="delete-@i">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="6">
+                Total Invoice : @Model.Invoices.Count
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
